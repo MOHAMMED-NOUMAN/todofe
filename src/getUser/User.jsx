@@ -52,19 +52,22 @@ const User = () => {
   };
 
   return (
-    <div className="userTable p-10 flex flex-col mt-10 px-4">
+    <div className="userTable p-4 sm:p-10 flex flex-col mt-10">
 
-      <Link to="/add">
-        <button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg shadow-md transition duration-300 flex items-center gap-2 font-medium">
-          Add User
-          <i className="fa-solid fa-user-plus text-sm"></i>
-        </button>
-      </Link>
+      <div className="flex justify-start">
+        <Link to="/add">
+          <button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg shadow-md transition duration-300 flex items-center gap-2 font-medium">
+            Add User
+            <i className="fa-solid fa-user-plus text-sm"></i>
+          </button>
+        </Link>
+      </div>
 
-      <table className="w-full max-w-6xl border border-gray-300 shadow-md rounded-lg overflow-hidden">
+      <div className="overflow-x-auto w-full shadow-md rounded-lg border border-gray-300">
+        <table className="w-full min-w-[800px] bg-white overflow-hidden">
 
-        <thead className="bg-gray-100 text-gray-700">
-          <tr>
+          <thead className="bg-gray-100 text-gray-700">
+            <tr>
             <th className="px-6 py-4 text-left">S.No</th>
             <th className="px-6 py-4 text-left">Name</th>
             <th className="px-6 py-4 text-left">Email</th>
@@ -129,7 +132,8 @@ const User = () => {
 
         </tbody>
 
-      </table>
+        </table>
+      </div>
 
     </div>
   )
