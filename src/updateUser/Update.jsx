@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { Link,useNavigate,useParams  } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api/axiosConfig'
 import toast from 'react-hot-toast';
 const UpdateUser = () => {
     const [user, setUser] = useState({
@@ -20,7 +20,7 @@ const UpdateUser = () => {
     }
    useEffect(() => {
     console.log("[UpdateUser] Fetching user with ID:", id);
-    axios.get(`/api/user/${id}`)
+    api.get(`/api/user/${id}`)
     .then(response => {
         console.log("[UpdateUser] Loaded user data:", response.data);
         setUser(response.data);
@@ -34,7 +34,7 @@ const UpdateUser = () => {
         e.preventDefault();
         console.log("[UpdateUser] Submitting update for ID:", id, "Data:", user);
         try {
-            const response = await axios.put(`/api/update/user/${id}`, user);
+            const response = await api.put(`/api/update/user/${id}`, user);
             console.log("[UpdateUser] Update response:", response.data);
             toast.success(response.data.message, { position: "top-center" });
             setTimeout(() => {

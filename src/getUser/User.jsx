@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import axios from 'axios'
+import api from '../api/axiosConfig'
 
 const User = () => {
 
@@ -9,7 +9,7 @@ const User = () => {
 
   useEffect(() => {
     console.log("[User] Fetching all users...");
-    axios.get('/api/users')
+    api.get('/api/users')
       .then((response) => {
         console.log("[User] Fetched users:", response.data);
         setUsers(response.data);
@@ -24,7 +24,7 @@ const User = () => {
     try {
 
       console.log("[User] Deleting user with ID:", userId);
-      const response = await axios.delete(
+      const response = await api.delete(
         `/api/remove/user/${userId}`
       );
 

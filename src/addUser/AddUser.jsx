@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Link,useNavigate  } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api/axiosConfig'
 import toast from 'react-hot-toast';
 const AddUser = () => {
     const [user,setUser] = useState({
@@ -17,7 +17,7 @@ const AddUser = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         console.log("[AddUser] Submitting user:", user);
-        await axios.post("/api/user", user)
+        await api.post("/api/user", user)
             .then((response) => {
                 console.log("[AddUser] Success response:", response.data);
                 toast.success(response.data.message, { position: "top-center" });
